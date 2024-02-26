@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" >
+    <title>Parts of the Body</title>
+		<script language="JavaScript">
+    function writeText(txt) {
+        document.getElementById("desc").innerHTML=txt;
+}
+
+    function dissolveText(txt) { 
+        document.getElementById("desc").innerHTML=txt;
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
+<style>
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin:0;
+  padding: 0;
+}
+
+.topnav {
+	overflow: hidden;
+	background-color: #9fffcb;
+	height: 60px;
+  
+}
+.topnav a {
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	float:left;
+	font-size: 22px;
+	font-family: 'Raleway', sans-serif;
+	
+}
+.topnav a:hover {
+	background-color: #57cc99;
+	color: white;
+	height: 60px;
+}
+.topnav a.active {
+	background-color: #9fffcb;
+	color: black;
+	float: left;
+	margin-right: 40%;
+	text-decoration:none;
+	text-transform: uppercase;
+	font-weight: 1000;
+	pointer-events: none;
+   cursor: default;
+	
+}
+
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+  font-family: 'Raleway', sans-serif;
+
+}
+
+.dropdown .dropbtn {
+  font-size: 22px;  
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #57cc99;
+  color: white;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 20px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #57cc99;
+  color: white;
+  height: 60px ;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.content {
+  background-color: white;
+  color: #002129;
+  height:auto; 
+  padding: 0px 40px;
+
+}
+
+
+div.footer2{
+	font-family: 'Raleway', sans-serif;
+	color: #f9ffed;
+	text-align: center;
+	font-weight: lighter;
+	font-size: 20px;
+	background-color: black;
+			
+}
+
+
+hr{
+	width: 20%;
+	border: 5px solid #25a18e;
+	border-radius: 5px;
+}
+
+h1{
+	font-family: 'Pacifico', cursive;
+	font-size: 35px;
+	word-spacing: 12px;
+	letter-spacing:12x;
+	text-align: center;
+}
+
+
+p#desc{
+		font-family: tahoma;
+		font-size:18px;
+		color: black;
+		text-align: center;
+	}
+
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="#Home" class="active">Healthy Alley</a>
+		<a href="../../home.html">Home</a>
+		<a href="../../home.html#about">Page Infomation</a>
+		<a href="../../Gallery/gallery.html">Gallery</a>
+		<a href="mapping.html">Imagemap</a>
+		<a href="../../home.html#us">Author</a>
+		
+        <div class="dropdown">
+    <button class="dropbtn">Blogs
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+		<a href="../index.html">Mental Health</a>
+		<a href="../../Jaime/index.html">Chronic Disease</a>
+		<a href="../../Zairyl/MARINAS.html">Importance of healthy lifestyle during pandemic</a>
+		<a href="../../Daria/FITNESS/index.html">Training of the Fitness</a>
+    </div>
+  </div> 
+</div>
+
+<div class="content">
+<br><br>
+		<hr>
+					
+			<h1>Parts of the Body</h1>
+			<hr>
+
+		
+		<div align="center">
+		<img src="../../IMAGES/mapping2.jpg" usemap="#bodyMap">
+		<map name="bodyMap">
+				
+				
+				<area  shape="circle" coords="317,143,38" href="../../map/imgmp.html#Mental" target="newSpace"
+				onMouseOver="writeText('Mental Health');"  onMouseOut="dissolveText('');"/>
+				
+				<area  shape="rect" coords="304,254,398,321" href="../../map/imgmp.html#Chronic" target="newSpace"
+				onMouseOver="writeText('Chronic Diseases');"  onMouseOut="dissolveText('');"/>
+				
+				<area  shape="poly" coords="252,334,259,359,269,387,269,436,258,454,258,474,256,505,253,559,263,596,266,610,273,628,286,629,297,629,309,633,326,633,337,631,345,631,356,629,366,621,383,565,382,501,378,452,368,438,368,383,378,355,384,335" href="../../map/imgmp.html#Fitness" target="newSpace"
+				onMouseOver="writeText('Training of the fitness ');"  onMouseOut="dissolveText('');"/>
+
+				<area  shape="poly" coords="389,302,391,329,393,358,410,392,422,424,441,446,452,458,468,479,470,496,476,514,482,526,494,532,502,537,508,529,510,522,501,497,508,491,517,491,513,482,502,477,497,472,486,467,459,432,447,402,438,382,426,358,424,329,421,317,412,304,404,300" href="../../map/imgmp.html#Pandemic" target="newSpace"
+				onMouseOver="writeText('Importance of healthy lifestyle during pandemic');"  onMouseOut="dissolveText('');"/>
+				
+		</map>
+		<p id="desc"></p>
+		
+		</div>
+
+  
+</div>
+
+
+<div class="footer2">
+		<br>
+		<h6>Healthy Alley &#169; 2021</h6>
+		<br>
+	</div>
+
+</body>
+</html>
