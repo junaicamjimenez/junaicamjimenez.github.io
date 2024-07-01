@@ -1,0 +1,17 @@
+{
+  "name": "appium_nodejs_testxure",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "webdriverio": "^8.39.0"
+  },
+  "dependencies": {
+    "puppeteer-core": "^22.12.0"
+  }
+}

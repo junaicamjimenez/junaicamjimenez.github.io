@@ -1,0 +1,93 @@
+import io.appium.java_client.AppiumBy;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+
+public class TestReddit {
+
+    static AppiumDriver driver;
+
+    public static void main(String[] args) throws MalformedURLException {
+        openMobileApp();
+    }
+
+    public static void openMobileApp() throws MalformedURLException {
+        DesiredCapabilities cap = new DesiredCapabilities();
+
+        cap.setCapability("deviceName", "JauneAndroid");
+        cap.setCapability("udid", "c8ee9635");
+        cap.setCapability("platformName", "Android");
+        cap.setCapability("platformVersion", "13");
+        cap.setCapability("automationName", "uiAutomator2");
+        cap.setCapability("appPackage", "com.xure.xperts");
+        cap.setCapability("appActivity", "com.xure.xperts.MainActivity");
+        cap.setCapability("autoAcceptAlerts", true);
+
+        URL url = new URL("http://127.0.0.1:4723/");
+        driver = new AndroidDriver(url, cap); // Changed to AndroidDriver since driver is of type AppiumDriver
+
+        System.out.println("Application started");
+
+        // Handle permissions directly after app launch
+        handlePermissions();
+
+        // Now perform other actions as needed
+        performLogin();
+    }
+
+    public static void handlePermissions() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        try {
+            // Adding a short sleep to allow dialogs to appear
+            Thread.sleep(2000); // Increase or decrease sleep time as per your app's speed
+
+            // Example handling of permissions, adjust as per your app's specific dialogs
+            // Handle the second permission: "While using the app"
+            try {
+                WebElement whileUsingButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                        new AppiumBy.ByAndroidUIAutomator("new UiSelector().textContains(\"While using the app\")")));
+                if (whileUsingButton != null && whileUsingButton.isDisplayed()) {
+                    whileUsingButton.click();
+                    System.out.println("Clicked 'While using the app' button for the second permission");
+                }
+            } catch (Exception e) {
+                System.out.println("'While using the app' button not found for the second permission");
+            }
+
+            // Adding a short sleep to allow dialogs to appear
+            Thread.sleep(2000); // Increase or decrease sleep time as per your app's speed
+
+            // Handle the third permission: "While using the app"
+            try {
+                WebElement whileUsingButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                        new AppiumBy.ByAndroidUIAutomator("new UiSelector().textContains(\"While using the app\")")));
+                if (whileUsingButton != null && whileUsingButton.isDisplayed()) {
+                    whileUsingButton.click();
+                    System.out.println("Clicked 'While using the app' button for the third permission");
+                }
+            } catch (Exception e) {
+                System.out.println("'While using the app' button not found for the third permission");
+            }
+
+        } catch (Exception e) {
+            System.out.println("No more permission dialogs to handle");
+        }
+    }
+
+    public static void performLogin() {
+        // Example of performing login actions after handling permissions
+        driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiSelector().text(\"Email address or username\")")).sendKeys("_jisookim");
+        driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiSelector().text(\"Password\")")).sendKeys("Tiger123@");
+        driver.findElement(new AppiumBy.ByAndroidUIAutomator("new UiSelector().className(\"android.view.ViewGroup\").instance(19)")).click();
+
+        // Add more actions here as per your test scenario
+    }
+}

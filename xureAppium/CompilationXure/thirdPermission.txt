@@ -1,0 +1,91 @@
+import io.appium.java_client.AppiumBy;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.Duration;
+
+public class AppTestTwo {
+
+    static AppiumDriver driver;
+
+    public static void main(String[] args) throws MalformedURLException {
+        openMobileApp();
+    }
+
+    public static void openMobileApp() throws MalformedURLException {
+        DesiredCapabilities cap = new DesiredCapabilities();
+
+        cap.setCapability("deviceName", "JauneAndroid");
+        cap.setCapability("udid", "c8ee9635");
+        cap.setCapability("platformName", "Android");
+        cap.setCapability("platformVersion", "13");
+        cap.setCapability("automationName", "uiAutomator2");
+        cap.setCapability("appPackage", "com.xdeal");
+        cap.setCapability("appActivity", "com.xdeal.MainActivity");
+        cap.setCapability("autoAcceptAlerts", true);
+
+        URL url = new URL("http://127.0.0.1:4723/");
+        driver = new AppiumDriver(url, cap);
+
+        handlePermissions();
+
+        System.out.println("Application started");
+    }
+
+    public static void handlePermissions() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        try {
+            // Handle the first permission: "Allow"
+            try {
+                WebElement allowButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                        new AppiumBy.ByAndroidUIAutomator("new UiSelector().resourceId(\"com.android.permissioncontroller:id/permission_allow_button\")")));
+                if (allowButton != null && allowButton.isDisplayed()) {
+                    allowButton.click();
+                    System.out.println("Clicked 'Allow' button");
+                }
+            } catch (Exception e) {
+                System.out.println("'Allow' button not found");
+            }
+
+            // Adding a short sleep to allow the next dialog to appear
+            Thread.sleep(1000);
+
+            // Handle the second permission: "While using the app"
+            try {
+                WebElement whileUsingButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                        new AppiumBy.ByAndroidUIAutomator("new UiSelector().textContains(\"While using the app\")")));
+                if (whileUsingButton != null && whileUsingButton.isDisplayed()) {
+                    whileUsingButton.click();
+                    System.out.println("Clicked 'While using the app' button for the second permission");
+                }
+            } catch (Exception e) {
+                System.out.println("'While using the app' button not found for the second permission");
+            }
+
+            // Adding a short sleep to allow the next dialog to appear
+            Thread.sleep(1000);
+
+            // Handle the third permission: "While using the app"
+            try {
+                WebElement whileUsingButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                        new AppiumBy.ByAndroidUIAutomator("new UiSelector().textContains(\"While using the app\")")));
+                if (whileUsingButton != null && whileUsingButton.isDisplayed()) {
+                    whileUsingButton.click();
+                    System.out.println("Clicked 'While using the app' button for the third permission");
+                }
+            } catch (Exception e) {
+                System.out.println("'While using the app' button not found for the third permission");
+            }
+
+        } catch (Exception e) {
+            System.out.println("No more permission dialogs to handle");
+        }
+    }
+}
